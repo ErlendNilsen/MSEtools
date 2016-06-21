@@ -1,0 +1,10 @@
+Package: MSEtools
+Type: Package
+Title: A collection of tools used when building (generalized) MSE models
+Version: 0.1.0
+Author: Erlend B. Nilsen
+Maintainer: Who to complain to <erlend.nilsen@nina.no>
+Description: More about what it does (maybe more than one line)
+License: What license is it under?
+LazyData: TRUE
+RoxygenNote: 5.0.1
