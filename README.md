@@ -1,2 +1,3 @@
 # MSEtools
-A collection of functions usuful when constructing MSE models
+A collection of functions usuful when constructing MSE models...
+
