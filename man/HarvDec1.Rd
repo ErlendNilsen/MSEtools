@@ -2,7 +2,7 @@
 % Please edit documentation in R/HarvestDecisionModels.R
 \name{HarvDec1}
 \alias{HarvDec1}
-\title{General harvest decision model}
+\title{Harvest decision model - when population estimates are available}
 \usage{
 HarvDec1(HD_type = "A", c = 1000, qu = 0.2, PopState_est = 100)
 }

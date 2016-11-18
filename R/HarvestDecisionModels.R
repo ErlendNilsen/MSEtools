@@ -1,6 +1,6 @@
 
 ##########################################################################################################
-#' General harvest decision model
+#' Harvest decision model - when population estimates are available
 #'
 #' Select harvest decision model (proportional harvest, constant quota or threshold harvesting)
 #' to be applied. Each model are supplied with a set of control parameters.
@@ -27,3 +27,28 @@ HarvDec1 <- function(HD_type="A", c=1000, qu=0.2, PopState_est=100){
 
   TAC
 }
+
+
+##########################################################################################################
+#' Harvest decision model - when measures of hunters frusration is available
+#'
+#' Harvest dection (qouta or effort) is decided based on information about
+#' the level of frustration among hunters.
+#'
+#' @param qu Scaling paramter deciding how much the managers will adjus qouta as a response to hunters frustration,
+#' @param TAC_t0 The total allowable catch (TAC) the previous year
+#' @param UR_targ The target level of frustrain that the managers are aimming for
+#' @param UR_est The measured or estimated level of frustraion among hunters
+#'
+#' @value TAC Total allowable cathc emerging from model and parameters
+#' @export
+
+HarvDec2 <- function(TAC_t0= 2,  qu=0.2, UR_targ=0.8, UR_est=0.7){
+  
+  
+  TAC <- ifelse(UR_targ>round(UR_est, 1), TAC_t1+qu, 
+                ifelse(UR_targ<round(UR_est,1), TAC_t1-qu, TAC_t1))
+  TAC
+  
+}
+
