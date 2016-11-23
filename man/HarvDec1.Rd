@@ -20,6 +20,9 @@ harvesting}
 
 \item{PopState_est}{The (estimated) population size available to managers when making decision}
 }
+\value{
+TAC Total allowable cathc emerging from model and parameters
+}
 \description{
 Select harvest decision model (proportional harvest, constant quota or threshold harvesting)
 to be applied. Each model are supplied with a set of control parameters.

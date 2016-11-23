@@ -17,7 +17,7 @@
 obs_mod1 <- function(scale="Abund", value=1000, bias=1, cv=0.2, LogNorm="ND"){
 
   obs1 <-  switch(LogNorm,
-                  LND={rlnorm(n=1, meanlog=log(value*bias), sdlog=log(cv))},
+                  LND={rlnorm(n=1, meanlog=log(value*bias), sdlog=cv)},
                   ND={rnorm(n=1,mean=value*bias, sd=cv*value)})
 
   obs1 <- switch(scale,
