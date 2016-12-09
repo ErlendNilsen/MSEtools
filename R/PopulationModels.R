@@ -9,9 +9,9 @@
 #'@param sigma2_e environmental stoachasticity
 #'@param N_Harv Number of individuals harvested (in year t0)
 #'@param K Carrying capacity of the theta-logistic model
-#'@param r_max Maximum growth rate (i.e. intrinsic growht rate)
-#'@return Data frame containing the follwoing columns:
-#'@return eps: Value of the stocathic component in year t
+#'@param r_max Maximum growth rate (i.e. intrinsic growth rate)
+#'@return Data frame containing the following columns:
+#'@return eps: Value of the stochastic component in year t
 #'@return X_star Post-harvest population size
 #'@return r Population growth rate
 #'@return X_t1 Population size (X) in year t=1
@@ -47,12 +47,12 @@ PopMod1 <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, theta=1, r_max=1.0
 #' grows according to the parameters governing the dynamics of the (model) population.
 #'
 #'@param X_t0 Population size (X) at time t=0 (i.e. at the time step before the function applies)
-#'@param sigma2_e environmental stoachasticity
+#'@param sigma2_e environmental stochasticity
 #'@param N_Harv Number of individuals harvested (in year t0)
 #'@param K Carrying capacity of the theta-logistic model
-#'@param r_max Maximum growth rate (i.e. intrinsic growht rate)
-#'@return Data frame containing the follwoing columns:
-#'@return eps: Value of the stocathic component in year t
+#'@param r_max Maximum growth rate (i.e. intrinsic growth rate)
+#'@return Data frame containing the following columns:
+#'@return eps: Value of the stochastic component in year t
 #'@return X_star Post-harvest population size
 #'@return X_t1 Population size (X) in year t=1
 #'@return lam Population growth rate (lambda) in year t
@@ -92,9 +92,9 @@ PopMod2 <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, r_max=1.0){
 #'@param sigma2_e environmental stoachasticity
 #'@param N_Harv Number of individuals harvested (in year t0)
 #'@param K Carrying capacity of the theta-logistic model
-#'@param r_max Maximum growth rate (i.e. intrinsic growht rate)
-#'@return Data frame containing the follwoing columns:
-#'@return eps: Value of the stocathic component in year t
+#'@param r_max Maximum growth rate (i.e. intrinsic growth rate)
+#'@return Data frame containing the following columns:
+#'@return eps: Value of the stochastic component in year t
 #'@return X_star Post-harvest population size
 #'@return r Population growth rate
 #'@return X_t1 Population size (X) in year t=1
@@ -131,9 +131,9 @@ PopMod1b <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, theta=1, r_max=1.
 #'@param sigma2_e environmental stoachasticity
 #'@param N_Harv Number of individuals harvested (in year t0)
 #'@param K Carrying capacity of the theta-logistic model
-#'@param r_max Maximum growth rate (i.e. intrinsic growht rate)
-#'@return Data frame containing the follwoing columns:
-#'@return eps: Value of the stocathic component in year t
+#'@param r_max Maximum growth rate (i.e. intrinsic growth rate)
+#'@return Data frame containing the following columns:
+#'@return eps: Value of the stochastic component in year t
 #'@return X_star Post-harvest population size
 #'@return r Population growth rate
 #'@return X_t1 Population size (X) in year t=1
