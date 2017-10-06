@@ -2,7 +2,7 @@
 #############################################################################################################
 #' Simple(st) observation model
 #'
-#' A simplistic observation model, based on the lognromal or normal distribution.
+#' A simplistic observation model, based on the lognormal or normal distribution.
 #'
 #' @param scale Indicates if you are modelling density ("Dens") or Abundance ("Abund").
 #' @param value The true value of abundance/density
