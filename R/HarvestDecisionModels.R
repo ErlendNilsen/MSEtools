@@ -23,7 +23,7 @@ HarvDec1 <- function(HD_type="A", c=1000, qu=0.2, PopState_est=100){
                 A={PopState_est*qu},
                 B={ifelse(PopState_est>c, PopState_est-c, 0)},
                 C={qu},
-                D={ifelse(PopState_est>c, qu(PopState_est-c), 0)})
+                D={ifelse(PopState_est>c, qu*(PopState_est-c), 0)})
 
   TAC
 }
