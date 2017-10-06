@@ -86,7 +86,8 @@ PopMod2 <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, r_max=1.0){
 #'
 #' A theta-logistic population model Variant (See Aanes et al. 2002 for model formulation), including the possibility for harvest. Harvest is 
 #' applied as a pulse removing a pre-determined number of individuals. After harvest is applied, the population
-#' grows according to the parameters governing the dynamics of the (model) population.
+#' grows according to the parameters governing the dynamics of the (model) population. Note that this type of model become the Gompertz model
+#' as theta approaches 0. 
 #'
 #'@param X_t0 Population size (X) at time t=0 (i.e. at the time step before the function applies)
 #'@param sigma2_e environmental stoachasticity
@@ -121,11 +122,10 @@ PopMod1b <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, theta=1, r_max=1.
 
 ##############################################################################################################
 ##############################################################################################################
-#' Theta-logistic population model - variant
-#'
-#' A theta-logistic population model Variant (with density dependence of X (not X_star), including the possibility for harvest. Harvest is applied
-#' as a pulse removing a pre-determined number of individuals. After harvest is applied, the population
-#' grows according to the parameters governing the dynamics of the (model) population.
+#' Logistic population model - also known as the Ricker model. Here, it is assumed that harvest takes place after the population growth process, 
+#' so that density dependent growth is dependent on X_t not X_star 
+#' 
+#'  
 #'
 #'@param X_t0 Population size (X) at time t=0 (i.e. at the time step before the function applies)
 #'@param sigma2_e environmental stoachasticity
@@ -139,13 +139,13 @@ PopMod1b <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, theta=1, r_max=1.
 #'@return X_t1 Population size (X) in year t=1
 #'@export
 
-PopMod1c <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, theta=1, r_max=1.3){
+PopMod1c <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, r_max=1.3){
 
   eps <- rnorm(1, mean=0, sd=sqrt(sigma2_e))
   X_star <- X_t0-N_Harv
 
-  r <- (r_max*(1-(X_t0/K)^theta))+eps
-  X_t1 <- X_star*exp(r)
+  r <- (r_max*(1-(X_t0/K)))+eps
+  X_t1 <- (X_t0*exp(r))-N_harv
 
   PopRes <- as.data.frame(matrix(ncol=4, nrow=1))
   PopRes[1,1] <- eps
