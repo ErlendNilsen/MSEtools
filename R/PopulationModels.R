@@ -2,7 +2,7 @@
 #' Theta-logistic population model
 #'
 #' A theta-logistic population model, including the possibility for harvest. Harvest is applied
-#' pulse removing a pre-determined number of individuals. After harvest is applied, the population
+#' as a pulse, removing a pre-determined number of individuals. After harvest is applied, the population
 #' grows according to the parameters governing the dynamics of the (model) population.
 #'
 #'@param X_t0 Population size (X) at time t=0 (i.e. at the time step before the function applies)
@@ -43,7 +43,7 @@ PopMod1 <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, theta=1, r_max=1.0
 #' Gompertz population model
 #'
 #' A gompertz-type population model, including the possibility for harvest. Harvest is applied
-#' pulse removing a pre-determined number of individuals. After harvest is applied, the population
+#' as a pulse removing a pre-determined number of individuals. After harvest is applied, the population
 #' grows according to the parameters governing the dynamics of the (model) population.
 #'
 #'@param X_t0 Population size (X) at time t=0 (i.e. at the time step before the function applies)
@@ -84,8 +84,8 @@ PopMod2 <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, r_max=1.0){
 ##############################################################################################################
 #' Theta-logistic population model - variant
 #'
-#' A theta-logistic population model Variant (See Aanes et al. 2002 for model formulation), including the possibility for harvest. Harvest is applied
-#' pulse removing a pre-determined number of individuals. After harvest is applied, the population
+#' A theta-logistic population model Variant (See Aanes et al. 2002 for model formulation), including the possibility for harvest. Harvest is 
+#' applied as a pulse removing a pre-determined number of individuals. After harvest is applied, the population
 #' grows according to the parameters governing the dynamics of the (model) population.
 #'
 #'@param X_t0 Population size (X) at time t=0 (i.e. at the time step before the function applies)
@@ -124,7 +124,7 @@ PopMod1b <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, theta=1, r_max=1.
 #' Theta-logistic population model - variant
 #'
 #' A theta-logistic population model Variant (with density dependence of X (not X_star), including the possibility for harvest. Harvest is applied
-#' pulse removing a pre-determined number of individuals. After harvest is applied, the population
+#' as a pulse removing a pre-determined number of individuals. After harvest is applied, the population
 #' grows according to the parameters governing the dynamics of the (model) population.
 #'
 #'@param X_t0 Population size (X) at time t=0 (i.e. at the time step before the function applies)
