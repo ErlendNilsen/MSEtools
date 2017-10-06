@@ -9,6 +9,7 @@
 #' A: Proportional harvest (i.e. constant harvest mortality)
 #' B: Threshold harvest (no harvest when bellow threshold c)
 #' C: constant quota harvest (i.e. remove same number of individuals regardless of pop. size)
+#' D: Proportional threshold harvest (i.e. removal of a proportion of the popualation above the threshold).
 #' @param qu Depending on type of harvest model: for proportional harvest, this is the harvest rate,
 #' for constant quota this is the number of individuals removed. Not relevant for (absolute) threshold
 #' harvesting
