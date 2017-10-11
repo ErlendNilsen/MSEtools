@@ -1,9 +1,10 @@
 
-#' Theta-logistic population model
+#' Theta-logistic population model - harvest before density dependent growth 
 #'
-#' A theta-logistic population model, including the possibility for harvest. Harvest is applied
-#' as a pulse, removing a pre-determined number of individuals. After harvest is applied, the population
-#' grows according to the parameters governing the dynamics of the (model) population.
+#' A theta-logistic (theta-Ricker) population model, including the possibility for harvest. Harvest is applied
+#' as a pulse, removing a pre-determined number of individuals. After harvest the population
+#' grows according to the parameters in the model. Environmental stochasticity (process error) is modelled as an 
+#'  additive effect on r(t). When theta = 1, the model it the conventional Ricker model .
 #'
 #'@param X_t0 Population size (X) at time t=0 (i.e. at the time step before the function applies)
 #'@param sigma2_e environmental stoachasticity
@@ -18,7 +19,7 @@
 #'@export
 
 
-PopMod1 <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, theta=1, r_max=1.0){
+PopMod_TLpre <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, theta=1, r_max=1.0){
 
   eps <- rnorm(1, mean=0, sd=sqrt(sigma2_e))
   X_star <- X_t0-N_Harv
@@ -40,11 +41,11 @@ PopMod1 <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, theta=1, r_max=1.0
 
 
 ##############################################################################################################
-#' Gompertz population model
+#' Gompertz population model - harvest before density dependent growth 
 #'
 #' A gompertz-type population model, including the possibility for harvest. Harvest is applied
-#' as a pulse removing a pre-determined number of individuals. After harvest is applied, the population
-#' grows according to the parameters governing the dynamics of the (model) population.
+#' as a pulse removing a pre-determined number of individuals. After harvest the (model) population
+#' grows according to the parameters in the model.
 #'
 #'@param X_t0 Population size (X) at time t=0 (i.e. at the time step before the function applies)
 #'@param sigma2_e environmental stochasticity
@@ -58,7 +59,7 @@ PopMod1 <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, theta=1, r_max=1.0
 #'@return lam Population growth rate (lambda) in year t
 #'@export
 
-PopMod2 <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, r_max=1.0){
+PopMod_Gomp <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, r_max=1.0){
 
   eps <- rnorm(1, mean=0, sd=sqrt(sigma2_e))
   X_star <- X_t0-N_Harv
@@ -85,7 +86,7 @@ PopMod2 <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, r_max=1.0){
 #' Theta-logistic population model - variant
 #'
 #' A theta-logistic population model Variant (See Aanes et al. 2002 for model formulation), including the possibility for harvest. Harvest is 
-#' applied as a pulse removing a pre-determined number of individuals. After harvest is applied, the population
+#' applied as a pulse removing a pre-determined number of individuals. After harvest the population
 #' grows according to the parameters governing the dynamics of the (model) population. Note that this type of model become the Gompertz model
 #' as theta approaches 0. 
 #'
@@ -101,7 +102,7 @@ PopMod2 <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, r_max=1.0){
 #'@return X_t1 Population size (X) in year t=1
 #'@export
 
-PopMod1b <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, theta=1, r_max=1.0){
+PopMod_TLvar <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, theta=1, r_max=1.0){
 
   eps <- rnorm(1, mean=0, sd=sqrt(sigma2_e))
   X_star <- X_t0-N_Harv
@@ -120,12 +121,14 @@ PopMod1b <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, theta=1, r_max=1.
 
 }
 
-##############################################################################################################
-##############################################################################################################
-#' Logistic population model - also known as the Ricker model. Here, it is assumed that harvest takes place after the population growth process, 
-#' so that density dependent growth is dependent on X_t not X_star 
-#' 
-#'  
+
+####################################################################################
+#' Theta-logistic population model - harvest after density dependent growth 
+#'
+#' A theta-logistic population model, including the possibility for harvest. Harvest is applied
+#' as a pulse, removing a pre-determined number of individuals. Before harvest is applied, the population
+#' grows according to the parameters governing the dynamics of the (model) population. When theta = 1, this become the 
+#' conventional Ricker model. 
 #'
 #'@param X_t0 Population size (X) at time t=0 (i.e. at the time step before the function applies)
 #'@param sigma2_e environmental stoachasticity
@@ -139,12 +142,12 @@ PopMod1b <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, theta=1, r_max=1.
 #'@return X_t1 Population size (X) in year t=1
 #'@export
 
-PopMod1c <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, K=200, r_max=1.3){
+PopMod_TLpost <- function(X_t0=100, sigma2_e=0.2, N_Harv=20, theta=1, K=200, r_max=1.3){
 
   eps <- rnorm(1, mean=0, sd=sqrt(sigma2_e))
   X_star <- X_t0-N_Harv
 
-  r <- (r_max*(1-(X_t0/K)))+eps
+  r <- (r_max*(1-(X_t0/K)^theta))+eps
   X_t1 <- (X_t0*exp(r))-N_harv
 
   PopRes <- as.data.frame(matrix(ncol=4, nrow=1))
