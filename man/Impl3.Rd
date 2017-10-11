@@ -22,4 +22,3 @@ H_I Number of harvested individuals (or harvested biomass)
 Csirke_MacCall`s catch pr unit effort (CPUE) model. Assumes that catchability (q) increase as
 population density (or biomass) decreases.
 }
-

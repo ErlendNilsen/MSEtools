@@ -1,9 +1,10 @@
 
 ##########################################################################################################
-#' Harvest decision model - when population estimates are available.
+#' Harvest decision model - assuming population estimates (i.e. monitoring data) are available.
 #'
 #' Select harvest decision model (proportional harvest, constant quota, proportional threshold or threshold harvesting)
-#' to be applied. Each model are supplied with a set of control parameters.
+#' to be applied, and set control parameters determine the size of the qouta 
+#' (i.e. the Total Allowable Catch - TAC).
 #'
 #' @param HD_type Type of harvest decision model, being one of three:
 #' A: Proportional harvest (i.e. constant harvest mortality)
@@ -31,36 +32,13 @@ HarvDec1 <- function(HD_type="A", c=1000, qu=0.2, PopState_est=100){
 }
 
 
-##########################################################################################################
-#' Harvest decision model - when measures of hunters frustration is available
-#'
-#' Harvest size (qouta or effort) is decided based on information about
-#' the level of frustration among hunters.
-#'
-#' @param qu Scaling parameter deciding how much the managers will adjust qouta 
-#' as a response to hunters frustration,
-#' @param TAC_t0 The total allowable catch (TAC) the previous year
-#' @param UR_targ The target level of frustration that the managers are aiming for
-#' @param UR_est The measured or estimated level of frustraion among hunters
-#'
-#' @return TAC Total allowable catch emerging from model and parameters
-#' @export
-
-HarvDec2 <- function(TAC_t0= 2,  qu=0.2, UR_targ=0.8, UR_est=0.7){
-  
-  
-  TAC <- ifelse(UR_targ>round(UR_est, 1), TAC_t1+qu, 
-                ifelse(UR_targ<round(UR_est,1), TAC_t1-qu, TAC_t1))
-  TAC
-  
-}
-
 
 ############################################################################################################
 #' Harvest decision model - when measures of hunters frustration is available
 #'
-#' Harvest size (qouta or effort) is decided based on information about
+#' Harvest size (qouta or effort) is based on information about
 #' the level of frustration among hunters.
+#' THIS IS WORK IN PROGRESS - JUST A VERY ROUGH IDEA!
 #'
 #' @param qu Scaling parameter deciding how much the managers will adjust qouta 
 #' as a response to hunters frustration,

@@ -22,6 +22,5 @@ obs_mod1(scale = "Abund", value = 1000, bias = 1, cv = 0.2,
 obs1 Mean value of the observation (i.e. observation)
 }
 \description{
-A simplistic observation model, based on the lognromal or normal distribution.
+A simplistic observation model, based on the lognormal or normal distribution.
 }
-

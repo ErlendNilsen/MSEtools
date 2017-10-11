@@ -20,4 +20,3 @@ H_I Number of harvested animals
 The simplest form of an implementation model - basically just a random draw from a
 binomial or a Poisson distribution.
 }
-

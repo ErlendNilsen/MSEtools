@@ -20,4 +20,3 @@ H_I Number of harvested individuals (or harvested biomass)
 Schaefer`s catch pr unit effort (CPUE) model. Assumes that catchability (q) is constant
 and not dependent on population density.
 }
-

@@ -29,4 +29,3 @@ population density (or biomass) decreases. Modified to include lower threshold w
 is abondened, determined from an observation of population state erging from an observation
 model. This is a shortcut, as this threshold is usually determined in a harvest decision model.
 }
-

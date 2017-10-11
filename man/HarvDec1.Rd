@@ -2,7 +2,7 @@
 % Please edit documentation in R/HarvestDecisionModels.R
 \name{HarvDec1}
 \alias{HarvDec1}
-\title{Harvest decision model - when population estimates are available}
+\title{Harvest decision model - assuming population estimates (i.e. monitoring data) are available.}
 \usage{
 HarvDec1(HD_type = "A", c = 1000, qu = 0.2, PopState_est = 100)
 }
@@ -10,21 +10,23 @@ HarvDec1(HD_type = "A", c = 1000, qu = 0.2, PopState_est = 100)
 \item{HD_type}{Type of harvest decision model, being one of three:
 A: Proportional harvest (i.e. constant harvest mortality)
 B: Threshold harvest (no harvest when bellow threshold c)
-C: constant quota harvest (i.e. remove same number of individuals regardless of pop. size)}
+C: constant quota harvest (i.e. remove same number of individuals regardless of pop. size)
+D: Proportional threshold harvest (i.e. removal of a proportion of the popualation above the threshold).}
 
-\item{c}{Threshold in the threshold harvest model}
+\item{c}{Threshold in the threshold harvest model and proportional threshold model}
 
 \item{qu}{Depending on type of harvest model: for proportional harvest, this is the harvest rate,
-for constant quota this is the number of individuals removed. Not relevant for (absolute) threshold
+for constant quota this is the number of individuals removed. For proportional threshold harvest,
+this is the proportion above the threshold that is removed.  Not relevant for (absolute) threshold
 harvesting}
 
 \item{PopState_est}{The (estimated) population size available to managers when making decision}
 }
 \value{
-TAC Total allowable cathc emerging from model and parameters
+TAC Total allowable catch emerging from model and parameters
 }
 \description{
-Select harvest decision model (proportional harvest, constant quota or threshold harvesting)
-to be applied. Each model are supplied with a set of control parameters.
+Select harvest decision model (proportional harvest, constant quota, proportional threshold or threshold harvesting)
+to be applied, and set control parameters determine the size of the qouta 
+(i.e. the Total Allowable Catch - TAC).
 }
-

@@ -1,12 +1,13 @@
 
 
 #############################################################################################################
-#' Simple implementation model
+#' Implementation of harvest quota
 #'
 #' The simplest form of an implementation model - basically just a random draw from a
-#' binomial or a Poisson distribution.
+#' binomial (ModType="A") or a Poisson (ModType="B") distribution.
 #'
-#'@param TAC Total allowable catch. Usually the output from a harvest decision model
+#'@param TAC Total allowable catch. Usually the output from a harvest decision model. Note that TAC must be an integer number
+#' when ModType="A". 
 #'@param ModType Type of probability model, being either A) Binomial or B) Poisson
 #'@param p Probability of harvest in the binomial model, or "bias" in the Poisson model
 #'@return H_I Number of harvested animals
