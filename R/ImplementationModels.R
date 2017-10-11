@@ -13,7 +13,7 @@
 #'@return H_I Number of harvested animals
 #'@export
 
-Impl1 <- function(TAC=10, ModType="A", p=0.7){
+Impl_rd <- function(TAC=10, ModType="A", p=0.7){
   H_I <- switch(ModType,
                 A={rbinom(1, size=TAC, p=p)},
                 B=(rpois(n=1, lambda=TAC*p)))
@@ -28,16 +28,17 @@ Impl1 <- function(TAC=10, ModType="A", p=0.7){
 #' Schaefer's CPUE model
 #'
 #' Schaefer`s catch pr unit effort (CPUE) model. Assumes that catchability (q) is constant
-#' and not dependent on population density.
+#' and not dependent on abundance (or density).
 #'
-#' @param Effort defines the effort, that will be multiplied by q to estimate total catch
+#' @param Effort Define the effort, that together with the catchability constant (q) and 
+#'  abundance (or population density) will determine total catch
 #' @param Pop_state Population abundance (or biomass)
 #' @param q Catchability coeficient
 #'
 #' @return H_I Number of harvested individuals (or harvested biomass)
 #' @export
 
-Impl2 <- function(Effort=3, Pop_state=100, q=0.1){
+Impl_schaefer <- function(Effort=3, Pop_state=100, q=0.1){
   H_I <- Effort*Pop_state*q
   H_I
 
@@ -48,8 +49,8 @@ Impl2 <- function(Effort=3, Pop_state=100, q=0.1){
 ##############################################################################################################
 #' Csirke_MacCall`s CPUE model
 #'
-#' Csirke_MacCall`s catch pr unit effort (CPUE) model. Assumes that catchability (q) increase as
-#' population density (or biomass) decreases.
+#' Csirke_MacCall`s catch pr unit effort (CPUE) model. Assumes that catchability (q) is dependent on
+#' abundance (or population density), most often increasing as abundance decrease.
 #'
 #' @param Effort defines the effort, that will be multiplied by q to estimate total catch
 #' @param Pop_state Population abundance (or biomass)
@@ -59,7 +60,7 @@ Impl2 <- function(Effort=3, Pop_state=100, q=0.1){
 #' @return H_I Number of harvested individuals (or harvested biomass)
 #' @export
 
-Impl3 <- function(Effort=3, alpha=0.13, beta=0.1, Pop_state=10){
+Impl_CM <- function(Effort=3, alpha=0.13, beta=0.1, Pop_state=10){
 
   q_star <- alpha*Pop_state^(-beta)
   H_I <- Effort * q_star * Pop_state
@@ -72,9 +73,12 @@ Impl3 <- function(Effort=3, alpha=0.13, beta=0.1, Pop_state=10){
 #' Csirke_MacCall`s CPUE model
 #'
 #' Csirke_MacCall`s catch pr unit effort (CPUE) model. Assumes that catchability (q) increase as
-#' population density (or biomass) decreases. Modified to include lower threshold where harvest
+#' population density (or biomass) decreases. 
+#' 
+#' Modified to include lower threshold where harvest
 #' is abondened, determined from an observation of population state erging from an observation
-#' model. This is a shortcut, as this threshold is usually determined in a harvest decision model.
+#' model. This is a shortcut, because such thresholds are most often
+#' determined in a harvest decision model.
 #'
 #' @param Effort defines the effort, that will be multiplied by q to estimate total catch
 #' @param Pop_state Population abundance (or biomass)
@@ -87,7 +91,7 @@ Impl3 <- function(Effort=3, alpha=0.13, beta=0.1, Pop_state=10){
 #' @export
 
 
-Impl3b <- function(Effort=3, alpha=0.13, beta=0.1, Pop_state=10, Est_Pop_state=10, c=10){
+Impl_SM2 <- function(Effort=3, alpha=0.13, beta=0.1, Pop_state=10, Est_Pop_state=10, c=10){
 
   q_star <- alpha*Pop_state^(-beta)
   H_I <- Effort * q_star * Pop_state
